@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Natali Ojeda Recalde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 80px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            font-size: 22px;
+            color: #a8d5ff;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .download-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .download-btn:hover {
+            background: #ee5a52;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(255,107,107,0.6);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .section-content {
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.2);
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .item-subtitle {
+            font-size: 14px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 15px;
+            color: #666;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            border: 2px solid #e0e7ff;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.15);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .hobbies-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hobby-tag {
+            background: #fff4e6;
+            color: #f76707;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 2px solid #ffe8cc;
+            transition: all 0.3s ease;
+        }
+
+        .hobby-tag:hover {
+            background: #ffe8cc;
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .download-btn {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .name {
+                font-size: 32px;
+            }
+            
+            .download-btn {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 20px auto;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="download-btn" onclick="window.print()">
+            📥 Descargar PDF
+        </button>
+
+        <div class="header">
+            <div class="header-content">
+                <div class="photo-container">
+                    <div class="photo-placeholder">👤</div>
+                    <!-- Para agregar tu foto, reemplaza el contenido del photo-container con:
+                    <img src="ruta-a-tu-foto.jpg" alt="Natali Ojeda Recalde">
+                    -->
+                </div>
+                <div class="header-text">
+                    <h1 class="name">Natali Ojeda Recalde</h1>
+                    <p class="title">Estudiante de Tecnicatura en Comercio Internacional y Despachante de Aduana</p>
+                    <div class="contact-info">
+                        <div class="contact-item">📍 San Juan 2471</div>
+                        <div class="contact-item">📱 WhatsApp: 3786617937</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">🎓 Educación</h2>
+                <div class="section-content">
+                    <div class="item">
+                        <div class="item-title">Tecnicatura en Comercio Internacional y Despachante de Aduana</div>
+                        <div class="item-subtitle">En curso</div>
+                        <div class="item-description">Formación profesional enfocada en comercio exterior, legislación aduanera y logística internacional.</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-title">Educación Secundaria</div>
+                        <div class="item-subtitle">Completada</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">📚 Capacitaciones</h2>
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skill-item">Curso de Inteligencia Artificial</div>
+                        <div class="skill-item">Taller de Inglés</div>
+                        <div class="skill-item">Curso de Software</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">💼 Habilidades</h2>
+                <div class="section-content">
+                    <div class="item">
+                        <div class="item-title">Cocina</div>
+                        <div class="item-description">Habilidad en preparación de alimentos y técnicas culinarias.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🌍 Idiomas</h2>
+                <div class="section-content">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-label">Inglés</div>
+                            <div class="info-value">Nivel Básico</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Portugués</div>
+                            <div class="info-value">Nivel Básico</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">⚡ Disponibilidad</h2>
+                <div class="section-content">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-label">Horario</div>
+                            <div class="info-value">Todo el día</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Medio de transporte</div>
+                            <div class="info-value">No disponible</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Disponibilidad de radicación</div>
+                            <div class="info-value">No</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">🎨 Hobbies e Intereses</h2>
+                <div class="section-content">
+                    <div class="hobbies-list">
+                        <div class="hobby-tag">🎵 Escuchar música</div>
+                        <div class="hobby-tag">👥 Estar con amigos</div>
+                        <div class="hobby-tag">⚽ Hacer deporte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animación de entrada para las secciones
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
